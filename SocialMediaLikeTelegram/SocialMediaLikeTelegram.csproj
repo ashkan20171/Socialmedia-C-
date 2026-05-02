@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,9 +33,41 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TelegramIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>C:\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.4.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JWT, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.1.3.4\lib\3.5\JWT.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin">
+      <HintPath>C:\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,25 +77,513 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Twilio, Version=7.14.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.7.14.7\lib\net35\Twilio.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AdvanceMethod.cs" />
+    <Compile Include="Channels\Frm_AddChannelChannelType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Channels\Frm_AddChannelChannelType.Designer.cs">
+      <DependentUpon>Frm_AddChannelChannelType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Channels\Frm_AddChannelName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Channels\Frm_AddChannelName.Designer.cs">
+      <DependentUpon>Frm_AddChannelName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Channels\Frm_AddAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Channels\Frm_AddAdmin.Designer.cs">
+      <DependentUpon>Frm_AddAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Channels\Frm_AddChannelAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Channels\Frm_AddChannelAddMember.Designer.cs">
+      <DependentUpon>Frm_AddChannelAddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Channels\Frm_AddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Channels\Frm_AddMember.Designer.cs">
+      <DependentUpon>Frm_AddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Channels\Frm_ManageMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Channels\Frm_ManageMembers.Designer.cs">
+      <DependentUpon>Frm_ManageMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Channels\Frm_ManageAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Channels\Frm_ManageAdministrator.Designer.cs">
+      <DependentUpon>Frm_ManageAdministrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Groups\Frm_AddBanUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Groups\Frm_AddBanUsers.Designer.cs">
+      <DependentUpon>Frm_AddBanUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Groups\Frm_AddGroupAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Groups\Frm_AddGroupAddMember.Designer.cs">
+      <DependentUpon>Frm_AddGroupAddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Groups\Frm_ManageBanUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Groups\Frm_ManageBanUsers.Designer.cs">
+      <DependentUpon>Frm_ManageBanUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Channels\Frm_ManagePermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Channels\Frm_ManagePermissions.Designer.cs">
+      <DependentUpon>Frm_ManagePermissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contacts\Frm_AddContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contacts\Frm_AddContact.Designer.cs">
+      <DependentUpon>Frm_AddContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contacts\Frm_EditContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contacts\Frm_EditContact.Designer.cs">
+      <DependentUpon>Frm_EditContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DropShadowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Frm_Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Dialog.Designer.cs">
+      <DependentUpon>Frm_Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_EditMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_EditMessages.Designer.cs">
+      <DependentUpon>Frm_EditMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Groups\Frm_AddGroupName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Groups\Frm_AddGroupName.Designer.cs">
+      <DependentUpon>Frm_AddGroupName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Chats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Chats.Designer.cs">
+      <DependentUpon>Frm_Chats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contacts\Frm_ContactList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contacts\Frm_ContactList.Designer.cs">
+      <DependentUpon>Frm_ContactList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_ManageBlockedUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ManageBlockedUsers.Designer.cs">
+      <DependentUpon>Frm_ManageBlockedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repository\ChatListItems.cs" />
+    <Compile Include="Models\Repository\Rep_Channels.cs" />
+    <Compile Include="Models\Repository\Rep_Chats.cs" />
+    <Compile Include="Models\Repository\Rep_Contact.cs" />
+    <Compile Include="Models\Repository\Rep_Groups.cs" />
+    <Compile Include="Models\Repository\Rep_Message.cs" />
+    <Compile Include="Models\Repository\Rep_Pic.cs" />
+    <Compile Include="Models\Repository\Rep_PrivateChat.cs" />
+    <Compile Include="Models\Repository\Rep_Users.cs" />
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_ActivationCode.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_BlockList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_CahnnelAdmins.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_ChannelMembers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_ChannelMessages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Channels.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Contact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Emoji.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_GroupAdmin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_GroupBanList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_GroupMembers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_GroupMessage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Groups.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Message.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_OpenSessions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Pic.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PrivateChat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PrivateChatMessage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Seen.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Users.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pics\Frm_ShowChatPics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pics\Frm_ShowChatPics.Designer.cs">
+      <DependentUpon>Frm_ShowChatPics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pics\Frm_ShowProfilesPics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pics\Frm_ShowProfilesPics.Designer.cs">
+      <DependentUpon>Frm_ShowProfilesPics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Frm_MiniProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Frm_MiniProfile.Designer.cs">
+      <DependentUpon>Frm_MiniProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_BlockUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_BlockUser.Designer.cs">
+      <DependentUpon>Frm_BlockUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_ChatBackgroundLibrary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_ChatBackgroundLibrary.Designer.cs">
+      <DependentUpon>Frm_ChatBackgroundLibrary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_EditBio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_EditBio.Designer.cs">
+      <DependentUpon>Frm_EditBio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_EditEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_EditEmail.Designer.cs">
+      <DependentUpon>Frm_EditEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_EditName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_EditName.Designer.cs">
+      <DependentUpon>Frm_EditName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_EditUsername.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_EditUsername.Designer.cs">
+      <DependentUpon>Frm_EditUsername.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_IDFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_IDFinder.Designer.cs">
+      <DependentUpon>Frm_IDFinder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_LastSeenPrivacy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_LastSeenPrivacy.Designer.cs">
+      <DependentUpon>Frm_LastSeenPrivacy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Main.Designer.cs">
+      <DependentUpon>Frm_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_ManageLocalStotage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_ManageLocalStotage.Designer.cs">
+      <DependentUpon>Frm_ManageLocalStotage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_Notification.Designer.cs">
+      <DependentUpon>Frm_Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_NotificationPositionAndCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_NotificationPositionAndCount.Designer.cs">
+      <DependentUpon>Frm_NotificationPositionAndCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_Session.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_Session.Designer.cs">
+      <DependentUpon>Frm_Session.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Frm_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\Frm_Setting.Designer.cs">
+      <DependentUpon>Frm_Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Frm_ActivationCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Frm_ActivationCode.Designer.cs">
+      <DependentUpon>Frm_ActivationCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Frm_AddProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Frm_AddProfile.Designer.cs">
+      <DependentUpon>Frm_AddProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Frm_Login.Designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Frm_ChannelInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Frm_ChannelInfo.Designer.cs">
+      <DependentUpon>Frm_ChannelInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Frm_GroupInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Frm_GroupInfo.Designer.cs">
+      <DependentUpon>Frm_GroupInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Frm_UserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Frm_UserInfo.Designer.cs">
+      <DependentUpon>Frm_UserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SemiTransparentPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Channels\Frm_AddChannelChannelType.resx">
+      <DependentUpon>Frm_AddChannelChannelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Channels\Frm_AddChannelName.resx">
+      <DependentUpon>Frm_AddChannelName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Channels\Frm_AddAdmin.resx">
+      <DependentUpon>Frm_AddAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Channels\Frm_AddChannelAddMember.resx">
+      <DependentUpon>Frm_AddChannelAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Channels\Frm_AddMember.resx">
+      <DependentUpon>Frm_AddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Channels\Frm_ManageMembers.resx">
+      <DependentUpon>Frm_ManageMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Channels\Frm_ManageAdministrator.resx">
+      <DependentUpon>Frm_ManageAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Groups\Frm_AddBanUsers.resx">
+      <DependentUpon>Frm_AddBanUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Groups\Frm_AddGroupAddMember.resx">
+      <DependentUpon>Frm_AddGroupAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Groups\Frm_ManageBanUsers.resx">
+      <DependentUpon>Frm_ManageBanUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Channels\Frm_ManagePermissions.resx">
+      <DependentUpon>Frm_ManagePermissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contacts\Frm_AddContact.resx">
+      <DependentUpon>Frm_AddContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contacts\Frm_EditContact.resx">
+      <DependentUpon>Frm_EditContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Dialog.resx">
+      <DependentUpon>Frm_Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_EditMessages.resx">
+      <DependentUpon>Frm_EditMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Groups\Frm_AddGroupName.resx">
+      <DependentUpon>Frm_AddGroupName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Chats.resx">
+      <DependentUpon>Frm_Chats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contacts\Frm_ContactList.resx">
+      <DependentUpon>Frm_ContactList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ManageBlockedUsers.resx">
+      <DependentUpon>Frm_ManageBlockedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pics\Frm_ShowChatPics.resx">
+      <DependentUpon>Frm_ShowChatPics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pics\Frm_ShowProfilesPics.resx">
+      <DependentUpon>Frm_ShowProfilesPics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Frm_MiniProfile.resx">
+      <DependentUpon>Frm_MiniProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_BlockUser.resx">
+      <DependentUpon>Frm_BlockUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_ChatBackgroundLibrary.resx">
+      <DependentUpon>Frm_ChatBackgroundLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_EditBio.resx">
+      <DependentUpon>Frm_EditBio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_EditEmail.resx">
+      <DependentUpon>Frm_EditEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_EditName.resx">
+      <DependentUpon>Frm_EditName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_EditUsername.resx">
+      <DependentUpon>Frm_EditUsername.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_IDFinder.resx">
+      <DependentUpon>Frm_IDFinder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_LastSeenPrivacy.resx">
+      <DependentUpon>Frm_LastSeenPrivacy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Main.resx">
+      <DependentUpon>Frm_Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Setting\Frm_ManageLocalStotage.resx">
+      <DependentUpon>Frm_ManageLocalStotage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_Notification.resx">
+      <DependentUpon>Frm_Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_NotificationPositionAndCount.resx">
+      <DependentUpon>Frm_NotificationPositionAndCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_Session.resx">
+      <DependentUpon>Frm_Session.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\Frm_Setting.resx">
+      <DependentUpon>Frm_Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Frm_ActivationCode.resx">
+      <DependentUpon>Frm_ActivationCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Frm_AddProfile.resx">
+      <DependentUpon>Frm_AddProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Frm_ChannelInfo.resx">
+      <DependentUpon>Frm_ChannelInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Frm_GroupInfo.resx">
+      <DependentUpon>Frm_GroupInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Frm_UserInfo.resx">
+      <DependentUpon>Frm_UserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -72,9 +593,99 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\ServiceReference1\SocialMediaLikeTelegram.ServiceReference1.SendResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\webservice.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components\Components.csproj">
+      <Project>{3FD89BE9-14BD-4F48-957D-A46982BC573D}</Project>
+      <Name>Components</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="TelegramIcon.ico" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\webservice.disco" />
+    <None Include="Resources\2 - Copy.jpg" />
+    <None Include="Resources\42.png" />
+    <None Include="Resources\btn_menu.png" />
+    <None Include="Resources\64_settings1.png" />
+    <None Include="Resources\64_search.png" />
+    <None Include="Resources\User.png" />
+    <None Include="Resources\64_users2.png" />
+    <None Include="Resources\Channel.png" />
+    <None Include="Resources\64_feedback1.png" />
+    <None Include="Resources\9.png" />
+    <None Include="Resources\8.png" />
+    <None Include="Resources\7.png" />
+    <None Include="Resources\6.png" />
+    <None Include="Resources\5.png" />
+    <None Include="Resources\41.png" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\select.png" />
+    <None Include="Resources\18_leave1.png" />
+    <None Include="Resources\64_image.png" />
+    <None Include="Resources\ic_send_black_48dp.png" />
+    <None Include="Resources\4.png" />
+    <None Include="Resources\64_users1.png" />
+    <None Include="Resources\64_users.png" />
+    <None Include="Resources\64_feedback.png" />
+    <None Include="Resources\64_settings.png" />
+    <None Include="Resources\bookmark1.png" />
+    <None Include="Resources\bookmark.png" />
+    <None Include="Resources\64_download1.png" />
+    <None Include="Resources\64_download.png" />
+    <None Include="Resources\Pereview.png" />
+    <None Include="Resources\Next.png" />
+    <None Include="Resources\64_mail.png" />
+    <None Include="Resources\camera.png" />
+    <None Include="Resources\call.png" />
+    <None Include="Resources\TlgNotification.jpg" />
+    <None Include="Resources\screen.png" />
+    <None Include="Resources\tshadowtopright.png" />
+    <None Include="Resources\tshadowright.png" />
+    <None Include="Resources\tshadowdownright.png" />
+    <None Include="Resources\tshadowdownleft.png" />
+    <None Include="Resources\tshadowdown.png" />
+    <None Include="Resources\18_block.png" />
+    <None Include="Resources\18_users.png" />
+    <None Include="Resources\18_User.png" />
+    <None Include="Resources\18_leave.png" />
+    <None Include="Resources\Minimum.png" />
+    <None Include="Resources\Maximum.png" />
+    <None Include="Resources\ic_close_black_48dp.png" />
+    <None Include="Resources\18_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

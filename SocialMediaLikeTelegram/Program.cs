@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialMediaLikeTelegram.Models.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,20 @@ namespace SocialMediaLikeTelegram
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var Code = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Software\SocialMediaLikeTelegram", "Session", null);
+            if (Code != null && Code != string.Empty)
+            {
+                var Q = Rep_Users.GetSession(Code.ToString());
+                if (Q != null)
+                {
+                    Frm_Chats.User_id = Q.User_id_FK.Value;
+                    Application.Run(new Frm_Chats());
+                }
+                else
+                    Application.Run(new Frm_Main());
+            }
+            else
+                Application.Run(new Frm_Main());
         }
     }
 }

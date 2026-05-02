@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7d4c629021e45a1bed28528b556d125" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="SocialMediaDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_ActivationCode" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_BlockList" Width="1.5" PointX="5.25" PointY="32" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_CahnnelAdmins" Width="1.5" PointX="12.75" PointY="25" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_ChannelMembers" Width="1.5" PointX="15.75" PointY="25.125" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_ChannelMessages" Width="1.5" PointX="5.25" PointY="18.375" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Channels" Width="1.5" PointX="10.5" PointY="20.5" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Contact" Width="1.5" PointX="5.25" PointY="29" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Emoji" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_GroupAdmin" Width="1.5" PointX="8.25" PointY="35.25" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_GroupBanList" Width="1.5" PointX="5.25" PointY="35.375" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_GroupMembers" Width="1.5" PointX="8.25" PointY="31.5" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_GroupMessage" Width="1.5" PointX="8.25" PointY="27.625" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Groups" Width="1.5" PointX="3" PointY="35.125" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Message" Width="1.5" PointX="3" PointY="13.25" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_OpenSessions" Width="1.5" PointX="5.25" PointY="22.375" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Pic" Width="1.5" PointX="0.75" PointY="22.375" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_PrivateChat" Width="1.5" PointX="5.25" PointY="25.625" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_PrivateChatMessage" Width="1.5" PointX="7.5" PointY="24.25" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Seen" Width="1.5" PointX="8.25" PointY="21.625" />
+        <EntityTypeShape EntityType="SocialMediaDBModel.tbl_Users" Width="1.5" PointX="3" PointY="24.75" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users1" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Channels" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Channels" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Message" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Channels_tbl_ChannelMessages" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Channels_tbl_Message" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Channels_tbl_Pic" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Channels_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Contact_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Contact_tbl_Users1" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Groups" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users1" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Groups" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users1" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Groups" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Groups" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Message" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Groups_tbl_Pic" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Message_tbl_Pic" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Message" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Seen_tbl_Message" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_OpenSessions_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Users_tbl_Pic" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users1" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_PrivateChat" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Users" />
+        <AssociationConnector Association="SocialMediaDBModel.FK_tbl_Seen_tbl_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

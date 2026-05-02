@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FD89BE9-14BD-4F48-957D-A46982BC573D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Components</RootNamespace>
+    <AssemblyName>Components</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>C:\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.4.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="MaterialSkin">
+      <HintPath>C:\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlockUsersListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BlockUsersListItem.Designer.cs">
+      <DependentUpon>BlockUsersListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BanUsersListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BanUsersListItem.Designer.cs">
+      <DependentUpon>BanUsersListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminListItem.Designer.cs">
+      <DependentUpon>AdminListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bubble\PhotoMessageBubble.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bubble\PhotoMessageBubble.Designer.cs">
+      <DependentUpon>PhotoMessageBubble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bubble\TextMessageBubble.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bubble\TextMessageBubble.Designer.cs">
+      <DependentUpon>TextMessageBubble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChatControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChatControl.Designer.cs">
+      <DependentUpon>ChatControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChatListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChatListControl.Designer.cs">
+      <DependentUpon>ChatListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChatListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChatListItem.Designer.cs">
+      <DependentUpon>ChatListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentsProperties.cs" />
+    <Compile Include="ContactListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ContactListItem.Designer.cs">
+      <DependentUpon>ContactListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SessionListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SessionListItem.Designer.cs">
+      <DependentUpon>SessionListItem.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BlockUsersListItem.resx">
+      <DependentUpon>BlockUsersListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BanUsersListItem.resx">
+      <DependentUpon>BanUsersListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminListItem.resx">
+      <DependentUpon>AdminListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bubble\PhotoMessageBubble.resx">
+      <DependentUpon>PhotoMessageBubble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bubble\TextMessageBubble.resx">
+      <DependentUpon>TextMessageBubble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatControl.resx">
+      <DependentUpon>ChatControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatListControl.resx">
+      <DependentUpon>ChatListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatListItem.resx">
+      <DependentUpon>ChatListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContactListItem.resx">
+      <DependentUpon>ContactListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SessionListItem.resx">
+      <DependentUpon>SessionListItem.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\ic_send_black_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_send_black_48dp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\18_users.png" />
+    <None Include="Resources\18_feedback.png" />
+    <None Include="Resources\18_feedback_w.png" />
+    <None Include="Resources\18_users_w.png" />
+    <Content Include="Resources\double-tick.png" />
+    <None Include="Resources\single-tick1.png" />
+    <None Include="Resources\double-tick1.png" />
+    <None Include="Resources\Seen.png" />
+    <None Include="Resources\ic_close_black_48dp.png" />
+    <Content Include="Resources\single-tick.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

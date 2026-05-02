@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SocialMediaLikeTelegram
+namespace SocialMediaLikeTelegram.Login
 {
-    public partial class Form1 : Form
+    public partial class Frm_AddProfile : Form
     {
-        public Form1()
+        public Frm_AddProfile()
         {
             InitializeComponent();
+        }
+
+        private void Frm_AddProfile_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -1,0 +1,2125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SocialMediaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_ActivationCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActivate" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_BlockList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Blocker_id_FK" Type="bigint" />
+          <Property Name="Blocked_id_FK" Type="bigint" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tbl_CahnnelAdmins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Channel_id_FK" Type="bigint" />
+          <Property Name="User_id_FK" Type="bigint" />
+          <Property Name="CanDelete" Type="bit" />
+          <Property Name="CanPin" Type="bit" />
+          <Property Name="CanEdit" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_ChannelMembers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Channel_id_FK" Type="bigint" />
+          <Property Name="User_id_FK" Type="bigint" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tbl_ChannelMessages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Channel_id_FK" Type="bigint" />
+          <Property Name="Sender_id_FK" Type="bigint" />
+          <Property Name="Message_id_FK" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbl_Channels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Creator_id_FK" Type="bigint" />
+          <Property Name="InviteLink" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Pic_id_FK" Type="bigint" />
+          <Property Name="Pic_Log" Type="nvarchar" MaxLength="50" />
+          <Property Name="PinMessage_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbl_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id_FK" Type="bigint" />
+          <Property Name="Contact_id_FK" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Emoji">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="RTF" Type="nvarchar(max)" />
+          <Property Name="Tumb_url" Type="nvarchar" MaxLength="50" />
+          <Property Name="Big_url" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_GroupAdmin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Group_id_FK" Type="bigint" />
+          <Property Name="User_id_FK" Type="bigint" />
+          <Property Name="Promoter_id_FK" Type="bigint" />
+          <Property Name="CanDelete" Type="bit" />
+          <Property Name="CanPin" Type="bit" />
+          <Property Name="CanBanMember" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_GroupBanList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Group_id_FK" Type="bigint" />
+          <Property Name="User_id_FK" Type="bigint" />
+          <Property Name="Restrictor_id_FK" Type="bigint" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tbl_GroupMembers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Group_id_FK" Type="bigint" />
+          <Property Name="User_id_FK" Type="bigint" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tbl_GroupMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Group_id_FK" Type="bigint" />
+          <Property Name="Message_id_FK" Type="bigint" />
+          <Property Name="Sender_id_FK" Type="bigint" />
+          <Property Name="IsRecive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_Groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="InviteLink" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pic_id_FK" Type="bigint" />
+          <Property Name="Pic_Log" Type="nvarchar" MaxLength="50" />
+          <Property Name="Creator_id_FK" Type="bigint" />
+          <Property Name="PinMessage_id_FK" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbl_Message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Pic_id_FK" Type="bigint" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="IsEdited" Type="bit" />
+          <Property Name="Time" Type="nchar" MaxLength="5" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_OpenSessions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id_FK" Type="bigint" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" />
+          <Property Name="OS" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="5" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Pic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pic_Url" Type="nvarchar" MaxLength="250" />
+          <Property Name="Uploader_id_FK" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbl_PrivateChat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_1_id_FK" Type="bigint" />
+          <Property Name="User_2_id_FK" Type="bigint" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tbl_PrivateChatMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrivateChat_id_FK" Type="bigint" />
+          <Property Name="Sender_id_FK" Type="bigint" />
+          <Property Name="Message_id_FK" Type="bigint" />
+          <Property Name="IsRecive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_Seen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message_id_FK" Type="bigint" />
+          <Property Name="User_id_FK" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Biography" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pic_id_FK" Type="bigint" />
+          <Property Name="Pic_Log" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastSeenDate" Type="nchar" MaxLength="10" />
+          <Property Name="LastSeenTime" Type="nchar" MaxLength="5" />
+          <Property Name="LastSeenPrivacy" Type="int" />
+        </EntityType>
+        <Association Name="FK_tbl_BlockList_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_BlockList" Type="Self.tbl_BlockList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_BlockList">
+              <PropertyRef Name="Blocker_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BlockList_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_BlockList" Type="Self.tbl_BlockList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_BlockList">
+              <PropertyRef Name="Blocked_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CahnnelAdmins_tbl_Channels">
+          <End Role="tbl_Channels" Type="Self.tbl_Channels" Multiplicity="0..1" />
+          <End Role="tbl_CahnnelAdmins" Type="Self.tbl_CahnnelAdmins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Channels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_CahnnelAdmins">
+              <PropertyRef Name="Channel_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CahnnelAdmins_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_CahnnelAdmins" Type="Self.tbl_CahnnelAdmins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_CahnnelAdmins">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMembers_tbl_Channels">
+          <End Role="tbl_Channels" Type="Self.tbl_Channels" Multiplicity="0..1" />
+          <End Role="tbl_ChannelMembers" Type="Self.tbl_ChannelMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Channels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMembers">
+              <PropertyRef Name="Channel_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMembers_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_ChannelMembers" Type="Self.tbl_ChannelMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMembers">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMessages_tbl_Message">
+          <End Role="tbl_Message" Type="Self.tbl_Message" Multiplicity="0..1" />
+          <End Role="tbl_ChannelMessages" Type="Self.tbl_ChannelMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMessages">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMessages_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_ChannelMessages" Type="Self.tbl_ChannelMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMessages">
+              <PropertyRef Name="Sender_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_ChannelMessages">
+          <End Role="tbl_ChannelMessages" Type="Self.tbl_ChannelMessages" Multiplicity="1" />
+          <End Role="tbl_Channels" Type="Self.tbl_Channels" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ChannelMessages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_Message">
+          <End Role="tbl_Message" Type="Self.tbl_Message" Multiplicity="0..1" />
+          <End Role="tbl_Channels" Type="Self.tbl_Channels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="PinMessage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_Pic">
+          <End Role="tbl_Pic" Type="Self.tbl_Pic" Multiplicity="0..1" />
+          <End Role="tbl_Channels" Type="Self.tbl_Channels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Channels" Type="Self.tbl_Channels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="Creator_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contact_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Contact" Type="Self.tbl_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Contact">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contact_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Contact" Type="Self.tbl_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Contact">
+              <PropertyRef Name="Contact_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupAdmin_tbl_Groups">
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
+          <End Role="tbl_GroupAdmin" Type="Self.tbl_GroupAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupAdmin">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupAdmin_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_GroupAdmin" Type="Self.tbl_GroupAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupAdmin">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupAdmin_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_GroupAdmin" Type="Self.tbl_GroupAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupAdmin">
+              <PropertyRef Name="Promoter_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupBanList_tbl_Groups">
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
+          <End Role="tbl_GroupBanList" Type="Self.tbl_GroupBanList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupBanList">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupBanList_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_GroupBanList" Type="Self.tbl_GroupBanList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupBanList">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupBanList_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_GroupBanList" Type="Self.tbl_GroupBanList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupBanList">
+              <PropertyRef Name="Restrictor_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMembers_tbl_Groups">
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
+          <End Role="tbl_GroupMembers" Type="Self.tbl_GroupMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMembers">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMembers_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_GroupMembers" Type="Self.tbl_GroupMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMembers">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMessage_tbl_Groups">
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
+          <End Role="tbl_GroupMessage" Type="Self.tbl_GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMessage">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMessage_tbl_Message">
+          <End Role="tbl_Message" Type="Self.tbl_Message" Multiplicity="0..1" />
+          <End Role="tbl_GroupMessage" Type="Self.tbl_GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMessage">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMessage_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_GroupMessage" Type="Self.tbl_GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMessage">
+              <PropertyRef Name="Sender_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Groups_tbl_Pic">
+          <End Role="tbl_Pic" Type="Self.tbl_Pic" Multiplicity="0..1" />
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Groups">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Message_tbl_Pic">
+          <End Role="tbl_Pic" Type="Self.tbl_Pic" Multiplicity="0..1" />
+          <End Role="tbl_Message" Type="Self.tbl_Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Message">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OpenSessions_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_OpenSessions" Type="Self.tbl_OpenSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_OpenSessions">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChat_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_PrivateChat" Type="Self.tbl_PrivateChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChat">
+              <PropertyRef Name="User_1_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChat_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_PrivateChat" Type="Self.tbl_PrivateChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChat">
+              <PropertyRef Name="User_2_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChatMessage_tbl_Message">
+          <End Role="tbl_Message" Type="Self.tbl_Message" Multiplicity="0..1" />
+          <End Role="tbl_PrivateChatMessage" Type="Self.tbl_PrivateChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChatMessage">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChatMessage_tbl_PrivateChat">
+          <End Role="tbl_PrivateChat" Type="Self.tbl_PrivateChat" Multiplicity="0..1" />
+          <End Role="tbl_PrivateChatMessage" Type="Self.tbl_PrivateChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrivateChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChatMessage">
+              <PropertyRef Name="PrivateChat_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChatMessage_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_PrivateChatMessage" Type="Self.tbl_PrivateChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChatMessage">
+              <PropertyRef Name="Sender_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Seen_tbl_Message">
+          <End Role="tbl_Message" Type="Self.tbl_Message" Multiplicity="0..1" />
+          <End Role="tbl_Seen" Type="Self.tbl_Seen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Seen">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Seen_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Seen" Type="Self.tbl_Seen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Seen">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_Pic">
+          <End Role="tbl_Pic" Type="Self.tbl_Pic" Multiplicity="0..1" />
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CreateChannel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Channel_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Channel_Type" Type="int" Mode="In" />
+          <Parameter Name="Channel_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="InviteLink" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pic_id" Type="bigint" Mode="In" />
+          <Parameter Name="Des" Type="nvarchar" Mode="In" />
+          <Parameter Name="Creator_id" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SocialMediaDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ActivationCode" EntityType="Self.tbl_ActivationCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BlockList" EntityType="Self.tbl_BlockList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CahnnelAdmins" EntityType="Self.tbl_CahnnelAdmins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ChannelMembers" EntityType="Self.tbl_ChannelMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ChannelMessages" EntityType="Self.tbl_ChannelMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Channels" EntityType="Self.tbl_Channels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Contact" EntityType="Self.tbl_Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Emoji" EntityType="Self.tbl_Emoji" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_GroupAdmin" EntityType="Self.tbl_GroupAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_GroupBanList" EntityType="Self.tbl_GroupBanList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_GroupMembers" EntityType="Self.tbl_GroupMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_GroupMessage" EntityType="Self.tbl_GroupMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Groups" EntityType="Self.tbl_Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Message" EntityType="Self.tbl_Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_OpenSessions" EntityType="Self.tbl_OpenSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Pic" EntityType="Self.tbl_Pic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrivateChat" EntityType="Self.tbl_PrivateChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrivateChatMessage" EntityType="Self.tbl_PrivateChatMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Seen" EntityType="Self.tbl_Seen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_BlockList_tbl_Users" Association="Self.FK_tbl_BlockList_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_BlockList" EntitySet="tbl_BlockList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BlockList_tbl_Users1" Association="Self.FK_tbl_BlockList_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_BlockList" EntitySet="tbl_BlockList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CahnnelAdmins_tbl_Channels" Association="Self.FK_tbl_CahnnelAdmins_tbl_Channels">
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+            <End Role="tbl_CahnnelAdmins" EntitySet="tbl_CahnnelAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CahnnelAdmins_tbl_Users" Association="Self.FK_tbl_CahnnelAdmins_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_CahnnelAdmins" EntitySet="tbl_CahnnelAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMembers_tbl_Channels" Association="Self.FK_tbl_ChannelMembers_tbl_Channels">
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+            <End Role="tbl_ChannelMembers" EntitySet="tbl_ChannelMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMembers_tbl_Users" Association="Self.FK_tbl_ChannelMembers_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_ChannelMembers" EntitySet="tbl_ChannelMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMessages_tbl_Message" Association="Self.FK_tbl_ChannelMessages_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_ChannelMessages" EntitySet="tbl_ChannelMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMessages_tbl_Users" Association="Self.FK_tbl_ChannelMessages_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_ChannelMessages" EntitySet="tbl_ChannelMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_ChannelMessages" Association="Self.FK_tbl_Channels_tbl_ChannelMessages">
+            <End Role="tbl_ChannelMessages" EntitySet="tbl_ChannelMessages" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_Message" Association="Self.FK_tbl_Channels_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_Pic" Association="Self.FK_tbl_Channels_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_Users" Association="Self.FK_tbl_Channels_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contact_tbl_Users" Association="Self.FK_tbl_Contact_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Contact" EntitySet="tbl_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contact_tbl_Users1" Association="Self.FK_tbl_Contact_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Contact" EntitySet="tbl_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupAdmin_tbl_Groups" Association="Self.FK_tbl_GroupAdmin_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupAdmin" EntitySet="tbl_GroupAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupAdmin_tbl_Users" Association="Self.FK_tbl_GroupAdmin_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupAdmin" EntitySet="tbl_GroupAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupAdmin_tbl_Users1" Association="Self.FK_tbl_GroupAdmin_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupAdmin" EntitySet="tbl_GroupAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupBanList_tbl_Groups" Association="Self.FK_tbl_GroupBanList_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupBanList" EntitySet="tbl_GroupBanList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupBanList_tbl_Users" Association="Self.FK_tbl_GroupBanList_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupBanList" EntitySet="tbl_GroupBanList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupBanList_tbl_Users1" Association="Self.FK_tbl_GroupBanList_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupBanList" EntitySet="tbl_GroupBanList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMembers_tbl_Groups" Association="Self.FK_tbl_GroupMembers_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupMembers" EntitySet="tbl_GroupMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMembers_tbl_Users" Association="Self.FK_tbl_GroupMembers_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupMembers" EntitySet="tbl_GroupMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMessage_tbl_Groups" Association="Self.FK_tbl_GroupMessage_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupMessage" EntitySet="tbl_GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMessage_tbl_Message" Association="Self.FK_tbl_GroupMessage_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_GroupMessage" EntitySet="tbl_GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMessage_tbl_Users" Association="Self.FK_tbl_GroupMessage_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupMessage" EntitySet="tbl_GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Groups_tbl_Pic" Association="Self.FK_tbl_Groups_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Message_tbl_Pic" Association="Self.FK_tbl_Message_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OpenSessions_tbl_Users" Association="Self.FK_tbl_OpenSessions_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_OpenSessions" EntitySet="tbl_OpenSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChat_tbl_Users" Association="Self.FK_tbl_PrivateChat_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrivateChat" EntitySet="tbl_PrivateChat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChat_tbl_Users1" Association="Self.FK_tbl_PrivateChat_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrivateChat" EntitySet="tbl_PrivateChat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChatMessage_tbl_Message" Association="Self.FK_tbl_PrivateChatMessage_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_PrivateChatMessage" EntitySet="tbl_PrivateChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChatMessage_tbl_PrivateChat" Association="Self.FK_tbl_PrivateChatMessage_tbl_PrivateChat">
+            <End Role="tbl_PrivateChat" EntitySet="tbl_PrivateChat" />
+            <End Role="tbl_PrivateChatMessage" EntitySet="tbl_PrivateChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChatMessage_tbl_Users" Association="Self.FK_tbl_PrivateChatMessage_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrivateChatMessage" EntitySet="tbl_PrivateChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Seen_tbl_Message" Association="Self.FK_tbl_Seen_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_Seen" EntitySet="tbl_Seen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Seen_tbl_Users" Association="Self.FK_tbl_Seen_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Seen" EntitySet="tbl_Seen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_Pic" Association="Self.FK_tbl_Users_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SocialMediaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SocialMediaDBEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SocialMediaDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SocialMediaDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="CreateChannel">
+            <Parameter Name="Channel_Name" Mode="In" Type="String" />
+            <Parameter Name="Channel_Type" Mode="In" Type="Int32" />
+            <Parameter Name="Channel_ID" Mode="In" Type="String" />
+            <Parameter Name="InviteLink" Mode="In" Type="String" />
+            <Parameter Name="Pic_id" Mode="In" Type="Int64" />
+            <Parameter Name="Des" Mode="In" Type="String" />
+            <Parameter Name="Creator_id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <EntitySet Name="sysdiagrams" EntityType="SocialMediaDBModel.sysdiagrams" />
+          <EntitySet Name="tbl_ActivationCode" EntityType="SocialMediaDBModel.tbl_ActivationCode" />
+          <EntitySet Name="tbl_BlockList" EntityType="SocialMediaDBModel.tbl_BlockList" />
+          <EntitySet Name="tbl_CahnnelAdmins" EntityType="SocialMediaDBModel.tbl_CahnnelAdmins" />
+          <EntitySet Name="tbl_ChannelMembers" EntityType="SocialMediaDBModel.tbl_ChannelMembers" />
+          <EntitySet Name="tbl_ChannelMessages" EntityType="SocialMediaDBModel.tbl_ChannelMessages" />
+          <EntitySet Name="tbl_Channels" EntityType="SocialMediaDBModel.tbl_Channels" />
+          <EntitySet Name="tbl_Contact" EntityType="SocialMediaDBModel.tbl_Contact" />
+          <EntitySet Name="tbl_Emoji" EntityType="SocialMediaDBModel.tbl_Emoji" />
+          <EntitySet Name="tbl_GroupAdmin" EntityType="SocialMediaDBModel.tbl_GroupAdmin" />
+          <EntitySet Name="tbl_GroupBanList" EntityType="SocialMediaDBModel.tbl_GroupBanList" />
+          <EntitySet Name="tbl_GroupMembers" EntityType="SocialMediaDBModel.tbl_GroupMembers" />
+          <EntitySet Name="tbl_GroupMessage" EntityType="SocialMediaDBModel.tbl_GroupMessage" />
+          <EntitySet Name="tbl_Groups" EntityType="SocialMediaDBModel.tbl_Groups" />
+          <EntitySet Name="tbl_Message" EntityType="SocialMediaDBModel.tbl_Message" />
+          <EntitySet Name="tbl_OpenSessions" EntityType="SocialMediaDBModel.tbl_OpenSessions" />
+          <EntitySet Name="tbl_Pic" EntityType="SocialMediaDBModel.tbl_Pic" />
+          <EntitySet Name="tbl_PrivateChat" EntityType="SocialMediaDBModel.tbl_PrivateChat" />
+          <EntitySet Name="tbl_PrivateChatMessage" EntityType="SocialMediaDBModel.tbl_PrivateChatMessage" />
+          <EntitySet Name="tbl_Seen" EntityType="SocialMediaDBModel.tbl_Seen" />
+          <EntitySet Name="tbl_Users" EntityType="SocialMediaDBModel.tbl_Users" />
+          <AssociationSet Name="FK_tbl_BlockList_tbl_Users" Association="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_BlockList" EntitySet="tbl_BlockList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BlockList_tbl_Users1" Association="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_BlockList" EntitySet="tbl_BlockList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CahnnelAdmins_tbl_Channels" Association="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Channels">
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+            <End Role="tbl_CahnnelAdmins" EntitySet="tbl_CahnnelAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CahnnelAdmins_tbl_Users" Association="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_CahnnelAdmins" EntitySet="tbl_CahnnelAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMembers_tbl_Channels" Association="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Channels">
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+            <End Role="tbl_ChannelMembers" EntitySet="tbl_ChannelMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMembers_tbl_Users" Association="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_ChannelMembers" EntitySet="tbl_ChannelMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMessages_tbl_Message" Association="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_ChannelMessages" EntitySet="tbl_ChannelMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ChannelMessages_tbl_Users" Association="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_ChannelMessages" EntitySet="tbl_ChannelMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_ChannelMessages" Association="SocialMediaDBModel.FK_tbl_Channels_tbl_ChannelMessages">
+            <End Role="tbl_ChannelMessages" EntitySet="tbl_ChannelMessages" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_Message" Association="SocialMediaDBModel.FK_tbl_Channels_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_Pic" Association="SocialMediaDBModel.FK_tbl_Channels_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Channels_tbl_Users" Association="SocialMediaDBModel.FK_tbl_Channels_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Channels" EntitySet="tbl_Channels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contact_tbl_Users" Association="SocialMediaDBModel.FK_tbl_Contact_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Contact" EntitySet="tbl_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contact_tbl_Users1" Association="SocialMediaDBModel.FK_tbl_Contact_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Contact" EntitySet="tbl_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupAdmin_tbl_Groups" Association="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupAdmin" EntitySet="tbl_GroupAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupAdmin_tbl_Users" Association="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupAdmin" EntitySet="tbl_GroupAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupAdmin_tbl_Users1" Association="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupAdmin" EntitySet="tbl_GroupAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupBanList_tbl_Groups" Association="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupBanList" EntitySet="tbl_GroupBanList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupBanList_tbl_Users" Association="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupBanList" EntitySet="tbl_GroupBanList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupBanList_tbl_Users1" Association="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupBanList" EntitySet="tbl_GroupBanList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMembers_tbl_Groups" Association="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupMembers" EntitySet="tbl_GroupMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMembers_tbl_Users" Association="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupMembers" EntitySet="tbl_GroupMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMessage_tbl_Groups" Association="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Groups">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_GroupMessage" EntitySet="tbl_GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMessage_tbl_Message" Association="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_GroupMessage" EntitySet="tbl_GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GroupMessage_tbl_Users" Association="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_GroupMessage" EntitySet="tbl_GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Groups_tbl_Pic" Association="SocialMediaDBModel.FK_tbl_Groups_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Message_tbl_Pic" Association="SocialMediaDBModel.FK_tbl_Message_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChatMessage_tbl_Message" Association="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_PrivateChatMessage" EntitySet="tbl_PrivateChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Seen_tbl_Message" Association="SocialMediaDBModel.FK_tbl_Seen_tbl_Message">
+            <End Role="tbl_Message" EntitySet="tbl_Message" />
+            <End Role="tbl_Seen" EntitySet="tbl_Seen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OpenSessions_tbl_Users" Association="SocialMediaDBModel.FK_tbl_OpenSessions_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_OpenSessions" EntitySet="tbl_OpenSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_Pic" Association="SocialMediaDBModel.FK_tbl_Users_tbl_Pic">
+            <End Role="tbl_Pic" EntitySet="tbl_Pic" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChat_tbl_Users" Association="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrivateChat" EntitySet="tbl_PrivateChat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChat_tbl_Users1" Association="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrivateChat" EntitySet="tbl_PrivateChat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChatMessage_tbl_PrivateChat" Association="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_PrivateChat">
+            <End Role="tbl_PrivateChat" EntitySet="tbl_PrivateChat" />
+            <End Role="tbl_PrivateChatMessage" EntitySet="tbl_PrivateChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrivateChatMessage_tbl_Users" Association="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrivateChatMessage" EntitySet="tbl_PrivateChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Seen_tbl_Users" Association="SocialMediaDBModel.FK_tbl_Seen_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Seen" EntitySet="tbl_Seen" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_ActivationCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActivate" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_BlockList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Blocker_id_FK" Type="Int64" />
+          <Property Name="Blocked_id_FK" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users" FromRole="tbl_BlockList" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users1" FromRole="tbl_BlockList" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_CahnnelAdmins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Channel_id_FK" Type="Int64" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <Property Name="CanDelete" Type="Boolean" />
+          <Property Name="CanPin" Type="Boolean" />
+          <Property Name="CanEdit" Type="Boolean" />
+          <NavigationProperty Name="tbl_Channels" Relationship="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Channels" FromRole="tbl_CahnnelAdmins" ToRole="tbl_Channels" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Users" FromRole="tbl_CahnnelAdmins" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_ChannelMembers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Channel_id_FK" Type="Int64" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Channels" Relationship="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Channels" FromRole="tbl_ChannelMembers" ToRole="tbl_Channels" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Users" FromRole="tbl_ChannelMembers" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_ChannelMessages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Channel_id_FK" Type="Int64" />
+          <Property Name="Sender_id_FK" Type="Int64" />
+          <Property Name="Message_id_FK" Type="Int64" />
+          <NavigationProperty Name="tbl_Message" Relationship="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Message" FromRole="tbl_ChannelMessages" ToRole="tbl_Message" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Users" FromRole="tbl_ChannelMessages" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Channels" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_ChannelMessages" FromRole="tbl_ChannelMessages" ToRole="tbl_Channels" />
+        </EntityType>
+        <EntityType Name="tbl_Channels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Creator_id_FK" Type="Int64" />
+          <Property Name="InviteLink" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Pic_id_FK" Type="Int64" />
+          <Property Name="Pic_Log" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PinMessage_id" Type="Int64" />
+          <NavigationProperty Name="tbl_CahnnelAdmins" Relationship="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Channels" FromRole="tbl_Channels" ToRole="tbl_CahnnelAdmins" />
+          <NavigationProperty Name="tbl_ChannelMembers" Relationship="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Channels" FromRole="tbl_Channels" ToRole="tbl_ChannelMembers" />
+          <NavigationProperty Name="tbl_ChannelMessages" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_ChannelMessages" FromRole="tbl_Channels" ToRole="tbl_ChannelMessages" />
+          <NavigationProperty Name="tbl_Message" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_Message" FromRole="tbl_Channels" ToRole="tbl_Message" />
+          <NavigationProperty Name="tbl_Pic" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_Pic" FromRole="tbl_Channels" ToRole="tbl_Pic" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_Users" FromRole="tbl_Channels" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <Property Name="Contact_id_FK" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_Contact_tbl_Users" FromRole="tbl_Contact" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="SocialMediaDBModel.FK_tbl_Contact_tbl_Users1" FromRole="tbl_Contact" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Emoji">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="RTF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tumb_url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Big_url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_GroupAdmin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Group_id_FK" Type="Int64" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <Property Name="Promoter_id_FK" Type="Int64" />
+          <Property Name="CanDelete" Type="Boolean" />
+          <Property Name="CanPin" Type="Boolean" />
+          <Property Name="CanBanMember" Type="Boolean" />
+          <NavigationProperty Name="tbl_Groups" Relationship="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Groups" FromRole="tbl_GroupAdmin" ToRole="tbl_Groups" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users" FromRole="tbl_GroupAdmin" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users1" FromRole="tbl_GroupAdmin" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_GroupBanList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Group_id_FK" Type="Int64" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <Property Name="Restrictor_id_FK" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Groups" Relationship="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Groups" FromRole="tbl_GroupBanList" ToRole="tbl_Groups" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users" FromRole="tbl_GroupBanList" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users1" FromRole="tbl_GroupBanList" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_GroupMembers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Group_id_FK" Type="Int64" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Groups" Relationship="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Groups" FromRole="tbl_GroupMembers" ToRole="tbl_Groups" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Users" FromRole="tbl_GroupMembers" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_GroupMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Group_id_FK" Type="Int64" />
+          <Property Name="Message_id_FK" Type="Int64" />
+          <Property Name="Sender_id_FK" Type="Int64" />
+          <Property Name="IsRecive" Type="Boolean" />
+          <NavigationProperty Name="tbl_Groups" Relationship="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Groups" FromRole="tbl_GroupMessage" ToRole="tbl_Groups" />
+          <NavigationProperty Name="tbl_Message" Relationship="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Message" FromRole="tbl_GroupMessage" ToRole="tbl_Message" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Users" FromRole="tbl_GroupMessage" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InviteLink" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Pic_id_FK" Type="Int64" />
+          <Property Name="Pic_Log" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Creator_id_FK" Type="Int64" />
+          <Property Name="PinMessage_id_FK" Type="Int64" />
+          <NavigationProperty Name="tbl_GroupAdmin" Relationship="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Groups" FromRole="tbl_Groups" ToRole="tbl_GroupAdmin" />
+          <NavigationProperty Name="tbl_GroupBanList" Relationship="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Groups" FromRole="tbl_Groups" ToRole="tbl_GroupBanList" />
+          <NavigationProperty Name="tbl_GroupMembers" Relationship="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Groups" FromRole="tbl_Groups" ToRole="tbl_GroupMembers" />
+          <NavigationProperty Name="tbl_GroupMessage" Relationship="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Groups" FromRole="tbl_Groups" ToRole="tbl_GroupMessage" />
+          <NavigationProperty Name="tbl_Pic" Relationship="SocialMediaDBModel.FK_tbl_Groups_tbl_Pic" FromRole="tbl_Groups" ToRole="tbl_Pic" />
+        </EntityType>
+        <EntityType Name="tbl_Message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Pic_id_FK" Type="Int64" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEdited" Type="Boolean" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_ChannelMessages" Relationship="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Message" FromRole="tbl_Message" ToRole="tbl_ChannelMessages" />
+          <NavigationProperty Name="tbl_Channels" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_Message" FromRole="tbl_Message" ToRole="tbl_Channels" />
+          <NavigationProperty Name="tbl_GroupMessage" Relationship="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Message" FromRole="tbl_Message" ToRole="tbl_GroupMessage" />
+          <NavigationProperty Name="tbl_Pic" Relationship="SocialMediaDBModel.FK_tbl_Message_tbl_Pic" FromRole="tbl_Message" ToRole="tbl_Pic" />
+          <NavigationProperty Name="tbl_PrivateChatMessage" Relationship="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Message" FromRole="tbl_Message" ToRole="tbl_PrivateChatMessage" />
+          <NavigationProperty Name="tbl_Seen" Relationship="SocialMediaDBModel.FK_tbl_Seen_tbl_Message" FromRole="tbl_Message" ToRole="tbl_Seen" />
+        </EntityType>
+        <EntityType Name="tbl_OpenSessions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_OpenSessions_tbl_Users" FromRole="tbl_OpenSessions" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Pic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pic_Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Uploader_id_FK" Type="Int64" />
+          <NavigationProperty Name="tbl_Channels" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_Pic" FromRole="tbl_Pic" ToRole="tbl_Channels" />
+          <NavigationProperty Name="tbl_Groups" Relationship="SocialMediaDBModel.FK_tbl_Groups_tbl_Pic" FromRole="tbl_Pic" ToRole="tbl_Groups" />
+          <NavigationProperty Name="tbl_Message" Relationship="SocialMediaDBModel.FK_tbl_Message_tbl_Pic" FromRole="tbl_Pic" ToRole="tbl_Message" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_Users_tbl_Pic" FromRole="tbl_Pic" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_PrivateChat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_1_id_FK" Type="Int64" />
+          <Property Name="User_2_id_FK" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users" FromRole="tbl_PrivateChat" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users1" FromRole="tbl_PrivateChat" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_PrivateChatMessage" Relationship="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_PrivateChat" FromRole="tbl_PrivateChat" ToRole="tbl_PrivateChatMessage" />
+        </EntityType>
+        <EntityType Name="tbl_PrivateChatMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrivateChat_id_FK" Type="Int64" />
+          <Property Name="Sender_id_FK" Type="Int64" />
+          <Property Name="Message_id_FK" Type="Int64" />
+          <Property Name="IsRecive" Type="Boolean" />
+          <NavigationProperty Name="tbl_Message" Relationship="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Message" FromRole="tbl_PrivateChatMessage" ToRole="tbl_Message" />
+          <NavigationProperty Name="tbl_PrivateChat" Relationship="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_PrivateChat" FromRole="tbl_PrivateChatMessage" ToRole="tbl_PrivateChat" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Users" FromRole="tbl_PrivateChatMessage" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Seen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message_id_FK" Type="Int64" />
+          <Property Name="User_id_FK" Type="Int64" />
+          <NavigationProperty Name="tbl_Message" Relationship="SocialMediaDBModel.FK_tbl_Seen_tbl_Message" FromRole="tbl_Seen" ToRole="tbl_Message" />
+          <NavigationProperty Name="tbl_Users" Relationship="SocialMediaDBModel.FK_tbl_Seen_tbl_Users" FromRole="tbl_Seen" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Biography" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Pic_id_FK" Type="Int64" />
+          <Property Name="Pic_Log" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastSeenDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="LastSeenTime" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="LastSeenPrivacy" Type="Int32" />
+          <NavigationProperty Name="tbl_BlockList" Relationship="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users" FromRole="tbl_Users" ToRole="tbl_BlockList" />
+          <NavigationProperty Name="tbl_BlockList1" Relationship="SocialMediaDBModel.FK_tbl_BlockList_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_BlockList" />
+          <NavigationProperty Name="tbl_CahnnelAdmins" Relationship="SocialMediaDBModel.FK_tbl_CahnnelAdmins_tbl_Users" FromRole="tbl_Users" ToRole="tbl_CahnnelAdmins" />
+          <NavigationProperty Name="tbl_ChannelMembers" Relationship="SocialMediaDBModel.FK_tbl_ChannelMembers_tbl_Users" FromRole="tbl_Users" ToRole="tbl_ChannelMembers" />
+          <NavigationProperty Name="tbl_ChannelMessages" Relationship="SocialMediaDBModel.FK_tbl_ChannelMessages_tbl_Users" FromRole="tbl_Users" ToRole="tbl_ChannelMessages" />
+          <NavigationProperty Name="tbl_Channels" Relationship="SocialMediaDBModel.FK_tbl_Channels_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Channels" />
+          <NavigationProperty Name="tbl_Contact" Relationship="SocialMediaDBModel.FK_tbl_Contact_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Contact" />
+          <NavigationProperty Name="tbl_Contact1" Relationship="SocialMediaDBModel.FK_tbl_Contact_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_Contact" />
+          <NavigationProperty Name="tbl_GroupAdmin" Relationship="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users" FromRole="tbl_Users" ToRole="tbl_GroupAdmin" />
+          <NavigationProperty Name="tbl_GroupAdmin1" Relationship="SocialMediaDBModel.FK_tbl_GroupAdmin_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_GroupAdmin" />
+          <NavigationProperty Name="tbl_GroupBanList" Relationship="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users" FromRole="tbl_Users" ToRole="tbl_GroupBanList" />
+          <NavigationProperty Name="tbl_GroupBanList1" Relationship="SocialMediaDBModel.FK_tbl_GroupBanList_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_GroupBanList" />
+          <NavigationProperty Name="tbl_GroupMembers" Relationship="SocialMediaDBModel.FK_tbl_GroupMembers_tbl_Users" FromRole="tbl_Users" ToRole="tbl_GroupMembers" />
+          <NavigationProperty Name="tbl_GroupMessage" Relationship="SocialMediaDBModel.FK_tbl_GroupMessage_tbl_Users" FromRole="tbl_Users" ToRole="tbl_GroupMessage" />
+          <NavigationProperty Name="tbl_OpenSessions" Relationship="SocialMediaDBModel.FK_tbl_OpenSessions_tbl_Users" FromRole="tbl_Users" ToRole="tbl_OpenSessions" />
+          <NavigationProperty Name="tbl_Pic" Relationship="SocialMediaDBModel.FK_tbl_Users_tbl_Pic" FromRole="tbl_Users" ToRole="tbl_Pic" />
+          <NavigationProperty Name="tbl_PrivateChat" Relationship="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users" FromRole="tbl_Users" ToRole="tbl_PrivateChat" />
+          <NavigationProperty Name="tbl_PrivateChat1" Relationship="SocialMediaDBModel.FK_tbl_PrivateChat_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_PrivateChat" />
+          <NavigationProperty Name="tbl_PrivateChatMessage" Relationship="SocialMediaDBModel.FK_tbl_PrivateChatMessage_tbl_Users" FromRole="tbl_Users" ToRole="tbl_PrivateChatMessage" />
+          <NavigationProperty Name="tbl_Seen" Relationship="SocialMediaDBModel.FK_tbl_Seen_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Seen" />
+        </EntityType>
+        <Association Name="FK_tbl_BlockList_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_BlockList" Role="tbl_BlockList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_BlockList">
+              <PropertyRef Name="Blocker_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BlockList_tbl_Users1">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_BlockList" Role="tbl_BlockList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_BlockList">
+              <PropertyRef Name="Blocked_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CahnnelAdmins_tbl_Channels">
+          <End Type="SocialMediaDBModel.tbl_Channels" Role="tbl_Channels" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_CahnnelAdmins" Role="tbl_CahnnelAdmins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Channels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_CahnnelAdmins">
+              <PropertyRef Name="Channel_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CahnnelAdmins_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_CahnnelAdmins" Role="tbl_CahnnelAdmins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_CahnnelAdmins">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMembers_tbl_Channels">
+          <End Type="SocialMediaDBModel.tbl_Channels" Role="tbl_Channels" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_ChannelMembers" Role="tbl_ChannelMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Channels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMembers">
+              <PropertyRef Name="Channel_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMembers_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_ChannelMembers" Role="tbl_ChannelMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMembers">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMessages_tbl_Message">
+          <End Type="SocialMediaDBModel.tbl_Message" Role="tbl_Message" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_ChannelMessages" Role="tbl_ChannelMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMessages">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ChannelMessages_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_ChannelMessages" Role="tbl_ChannelMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_ChannelMessages">
+              <PropertyRef Name="Sender_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_ChannelMessages">
+          <End Type="SocialMediaDBModel.tbl_ChannelMessages" Role="tbl_ChannelMessages" Multiplicity="1" />
+          <End Type="SocialMediaDBModel.tbl_Channels" Role="tbl_Channels" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ChannelMessages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_Message">
+          <End Type="SocialMediaDBModel.tbl_Message" Role="tbl_Message" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Channels" Role="tbl_Channels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="PinMessage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_Pic">
+          <End Type="SocialMediaDBModel.tbl_Pic" Role="tbl_Pic" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Channels" Role="tbl_Channels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Channels_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Channels" Role="tbl_Channels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Channels">
+              <PropertyRef Name="Creator_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contact_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Contact" Role="tbl_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Contact">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contact_tbl_Users1">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Contact" Role="tbl_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Contact">
+              <PropertyRef Name="Contact_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupAdmin_tbl_Groups">
+          <End Type="SocialMediaDBModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupAdmin" Role="tbl_GroupAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupAdmin">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupAdmin_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupAdmin" Role="tbl_GroupAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupAdmin">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupAdmin_tbl_Users1">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupAdmin" Role="tbl_GroupAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupAdmin">
+              <PropertyRef Name="Promoter_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupBanList_tbl_Groups">
+          <End Type="SocialMediaDBModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupBanList" Role="tbl_GroupBanList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupBanList">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupBanList_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupBanList" Role="tbl_GroupBanList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupBanList">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupBanList_tbl_Users1">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupBanList" Role="tbl_GroupBanList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupBanList">
+              <PropertyRef Name="Restrictor_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMembers_tbl_Groups">
+          <End Type="SocialMediaDBModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupMembers" Role="tbl_GroupMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMembers">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMembers_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupMembers" Role="tbl_GroupMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMembers">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMessage_tbl_Groups">
+          <End Type="SocialMediaDBModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupMessage" Role="tbl_GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMessage">
+              <PropertyRef Name="Group_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMessage_tbl_Message">
+          <End Type="SocialMediaDBModel.tbl_Message" Role="tbl_Message" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupMessage" Role="tbl_GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMessage">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GroupMessage_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_GroupMessage" Role="tbl_GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_GroupMessage">
+              <PropertyRef Name="Sender_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Groups_tbl_Pic">
+          <End Type="SocialMediaDBModel.tbl_Pic" Role="tbl_Pic" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Groups" Role="tbl_Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Groups">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Message_tbl_Pic">
+          <End Type="SocialMediaDBModel.tbl_Pic" Role="tbl_Pic" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Message" Role="tbl_Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Message">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChatMessage_tbl_Message">
+          <End Type="SocialMediaDBModel.tbl_Message" Role="tbl_Message" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_PrivateChatMessage" Role="tbl_PrivateChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChatMessage">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Seen_tbl_Message">
+          <End Type="SocialMediaDBModel.tbl_Message" Role="tbl_Message" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Seen" Role="tbl_Seen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Message">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Seen">
+              <PropertyRef Name="Message_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OpenSessions_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_OpenSessions" Role="tbl_OpenSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_OpenSessions">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_Pic">
+          <End Type="SocialMediaDBModel.tbl_Pic" Role="tbl_Pic" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Pic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="Pic_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChat_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_PrivateChat" Role="tbl_PrivateChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChat">
+              <PropertyRef Name="User_1_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChat_tbl_Users1">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_PrivateChat" Role="tbl_PrivateChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChat">
+              <PropertyRef Name="User_2_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChatMessage_tbl_PrivateChat">
+          <End Type="SocialMediaDBModel.tbl_PrivateChat" Role="tbl_PrivateChat" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_PrivateChatMessage" Role="tbl_PrivateChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrivateChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChatMessage">
+              <PropertyRef Name="PrivateChat_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrivateChatMessage_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_PrivateChatMessage" Role="tbl_PrivateChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PrivateChatMessage">
+              <PropertyRef Name="Sender_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Seen_tbl_Users">
+          <End Type="SocialMediaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="SocialMediaDBModel.tbl_Seen" Role="tbl_Seen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Seen">
+              <PropertyRef Name="User_id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SocialMediaDBModelStoreContainer" CdmEntityContainer="SocialMediaDBEntities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SocialMediaDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SocialMediaDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SocialMediaDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SocialMediaDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SocialMediaDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SocialMediaDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SocialMediaDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SocialMediaDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SocialMediaDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="CreateChannel" FunctionName="SocialMediaDBModel.Store.CreateChannel" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ActivationCode">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_ActivationCode">
+              <MappingFragment StoreEntitySet="tbl_ActivationCode">
+                <ScalarProperty Name="IsActivate" ColumnName="IsActivate" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BlockList">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_BlockList">
+              <MappingFragment StoreEntitySet="tbl_BlockList">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Blocked_id_FK" ColumnName="Blocked_id_FK" />
+                <ScalarProperty Name="Blocker_id_FK" ColumnName="Blocker_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CahnnelAdmins">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_CahnnelAdmins">
+              <MappingFragment StoreEntitySet="tbl_CahnnelAdmins">
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="CanPin" ColumnName="CanPin" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="Channel_id_FK" ColumnName="Channel_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ChannelMembers">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_ChannelMembers">
+              <MappingFragment StoreEntitySet="tbl_ChannelMembers">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="Channel_id_FK" ColumnName="Channel_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ChannelMessages">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_ChannelMessages">
+              <MappingFragment StoreEntitySet="tbl_ChannelMessages">
+                <ScalarProperty Name="Message_id_FK" ColumnName="Message_id_FK" />
+                <ScalarProperty Name="Sender_id_FK" ColumnName="Sender_id_FK" />
+                <ScalarProperty Name="Channel_id_FK" ColumnName="Channel_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Channels">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Channels">
+              <MappingFragment StoreEntitySet="tbl_Channels">
+                <ScalarProperty Name="PinMessage_id" ColumnName="PinMessage_id" />
+                <ScalarProperty Name="Pic_Log" ColumnName="Pic_Log" />
+                <ScalarProperty Name="Pic_id_FK" ColumnName="Pic_id_FK" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="InviteLink" ColumnName="InviteLink" />
+                <ScalarProperty Name="Creator_id_FK" ColumnName="Creator_id_FK" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Contact">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Contact">
+              <MappingFragment StoreEntitySet="tbl_Contact">
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contact_id_FK" ColumnName="Contact_id_FK" />
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Emoji">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Emoji">
+              <MappingFragment StoreEntitySet="tbl_Emoji">
+                <ScalarProperty Name="Big_url" ColumnName="Big_url" />
+                <ScalarProperty Name="Tumb_url" ColumnName="Tumb_url" />
+                <ScalarProperty Name="RTF" ColumnName="RTF" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_GroupAdmin">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_GroupAdmin">
+              <MappingFragment StoreEntitySet="tbl_GroupAdmin">
+                <ScalarProperty Name="CanBanMember" ColumnName="CanBanMember" />
+                <ScalarProperty Name="CanPin" ColumnName="CanPin" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="Promoter_id_FK" ColumnName="Promoter_id_FK" />
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="Group_id_FK" ColumnName="Group_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_GroupBanList">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_GroupBanList">
+              <MappingFragment StoreEntitySet="tbl_GroupBanList">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Restrictor_id_FK" ColumnName="Restrictor_id_FK" />
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="Group_id_FK" ColumnName="Group_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_GroupMembers">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_GroupMembers">
+              <MappingFragment StoreEntitySet="tbl_GroupMembers">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="Group_id_FK" ColumnName="Group_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_GroupMessage">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_GroupMessage">
+              <MappingFragment StoreEntitySet="tbl_GroupMessage">
+                <ScalarProperty Name="IsRecive" ColumnName="IsRecive" />
+                <ScalarProperty Name="Sender_id_FK" ColumnName="Sender_id_FK" />
+                <ScalarProperty Name="Message_id_FK" ColumnName="Message_id_FK" />
+                <ScalarProperty Name="Group_id_FK" ColumnName="Group_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Groups">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Groups">
+              <MappingFragment StoreEntitySet="tbl_Groups">
+                <ScalarProperty Name="PinMessage_id_FK" ColumnName="PinMessage_id_FK" />
+                <ScalarProperty Name="Creator_id_FK" ColumnName="Creator_id_FK" />
+                <ScalarProperty Name="Pic_Log" ColumnName="Pic_Log" />
+                <ScalarProperty Name="Pic_id_FK" ColumnName="Pic_id_FK" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="InviteLink" ColumnName="InviteLink" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Message">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Message">
+              <MappingFragment StoreEntitySet="tbl_Message">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="IsEdited" ColumnName="IsEdited" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Pic_id_FK" ColumnName="Pic_id_FK" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_OpenSessions">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_OpenSessions">
+              <MappingFragment StoreEntitySet="tbl_OpenSessions">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Pic">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Pic">
+              <MappingFragment StoreEntitySet="tbl_Pic">
+                <ScalarProperty Name="Uploader_id_FK" ColumnName="Uploader_id_FK" />
+                <ScalarProperty Name="Pic_Url" ColumnName="Pic_Url" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrivateChat">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_PrivateChat">
+              <MappingFragment StoreEntitySet="tbl_PrivateChat">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="User_2_id_FK" ColumnName="User_2_id_FK" />
+                <ScalarProperty Name="User_1_id_FK" ColumnName="User_1_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrivateChatMessage">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_PrivateChatMessage">
+              <MappingFragment StoreEntitySet="tbl_PrivateChatMessage">
+                <ScalarProperty Name="IsRecive" ColumnName="IsRecive" />
+                <ScalarProperty Name="Message_id_FK" ColumnName="Message_id_FK" />
+                <ScalarProperty Name="Sender_id_FK" ColumnName="Sender_id_FK" />
+                <ScalarProperty Name="PrivateChat_id_FK" ColumnName="PrivateChat_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Seen">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Seen">
+              <MappingFragment StoreEntitySet="tbl_Seen">
+                <ScalarProperty Name="User_id_FK" ColumnName="User_id_FK" />
+                <ScalarProperty Name="Message_id_FK" ColumnName="Message_id_FK" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="SocialMediaDBModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="LastSeenPrivacy" ColumnName="LastSeenPrivacy" />
+                <ScalarProperty Name="LastSeenTime" ColumnName="LastSeenTime" />
+                <ScalarProperty Name="LastSeenDate" ColumnName="LastSeenDate" />
+                <ScalarProperty Name="Pic_Log" ColumnName="Pic_Log" />
+                <ScalarProperty Name="Pic_id_FK" ColumnName="Pic_id_FK" />
+                <ScalarProperty Name="Biography" ColumnName="Biography" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
